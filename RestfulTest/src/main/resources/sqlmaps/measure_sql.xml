@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MyBatis가 실행하는 SQL이 들어 있는 SQL Mapper 파일 작성 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.restful.test">
+
+        <!-- 
+               select All by seq
+       -->
+        <resultMap  id="AllMemberList" type="com.restful.test.model.Measure">  
+               <result column="seq" property="seq"/>
+               <result column="key" property="key"/>
+               <result column="values" property="values"/>
+               <result column="input_dt" property="input_dt"/> 
+               <result column="extends_etc" property="extends_etc"/>
+        </resultMap>
+        
+        <!-- parameterType="int"  where seq = #{seq} -->
+        
+        <select id="getMeasureList" resultMap="AllMemberList" >
+               select seq, key, values, input_dt, extends 
+               from measures
+        </select>
+</mapper>
+ 
